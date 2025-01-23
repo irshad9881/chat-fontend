@@ -15,7 +15,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`http://localhost:1337/api/auth/local`, {
+            const response = await axios.post(`${BACKEND_URL}/api/auth/local`, {
                 identifier: email,
                 password,
             });
