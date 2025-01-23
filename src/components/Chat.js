@@ -13,13 +13,13 @@ const Chat = () => {
   const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
   useEffect(() => {
-    const socket = io(`http://localhost:1337`);
+    const socket = io(`${BACKEND_URL}`);
     socketRef.current = socket;
 
     const fetchUserName = async () => {
       try {
         const token = localStorage.getItem('jwt');
-        const response = await axios.get(`http://localhost:1337/api/users/me`, {
+        const response = await axios.get(`${BACKEND_URL}/api/users/me`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUserName(response.data.username);
